@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090e">
+    <title>Мины — XannUP</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="mines.css">
+
+    <script src="../assets/core.js"></script>
+    <script src="mines.js" defer></script>
+</head>
+
+<body>
+
+<main class="mines-page">
+
+    <header class="mines-header">
+        <a href="../index.html" class="mines-back">← Назад</a>
+        <div class="mines-logo">XannUP</div>
+    </header>
+
+    <h1 class="mines-title">Мины</h1>
+    <div class="mines-subtitle">
+        Найди безопасные клетки и собери коллекцию игровых достижений.
+    </div>
+
+    <section class="mines-panel">
+
+        <div class="mines-balance">
+            <div>
+                <span class="mines-label">Твой баланс</span>
+                <strong id="minesBalance">0</strong>
+            </div>
+
+            <span>XP: <b id="minesXP">0</b></span>
+        </div>
+
+        <div class="mines-settings">
+
+            <div class="mines-setting">
+                <label class="mines-label" for="gridSize">
+                    Размер поля
+                </label>
+
+                <select class="mines-select" id="gridSize">
+                    <option value="3">3 × 3</option>
+                    <option value="5" selected>5 × 5</option>
+                    <option value="10">10 × 10</option>
+                </select>
+            </div>
+
+            <div class="mines-setting">
+                <label class="mines-label" for="mineCount">
+                    Количество мин
+                </label>
+
+                <select class="mines-select" id="mineCount">
+                    <option value="1">1 мина</option>
+                    <option value="3" selected>3 мины</option>
+                    <option value="5">5 мин</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="mines-buttons">
+            <button class="mines-chip active" data-preset="easy">
+                Легко
+            </button>
+
+            <button class="mines-chip" data-preset="medium">
+                Средне
+            </button>
+
+            <button class="mines-chip" data-preset="hard">
+                Сложно
+            </button>
+        </div>
+
+    </section>
+
+    <section class="mines-panel">
+
+        <span class="mines-label">Игровое поле</span>
+
+        <div class="mines-grid" id="minesGrid"></div>
+
+        <div class="mines-actions">
+            <button
+                class="mines-main-button"
+                id="startGame"
+                type="button">
+                Начать игру
+            </button>
+
+            <button
+                class="mines-main-button secondary"
+                id="resetGame"
+                type="button">
+                Новая игра
+            </button>
+        </div>
+
+        <div class="mines-result" id="minesResult">
+            Выбери параметры и начни игру.
+        </div>
+
+    </section>
+
+    <section class="mines-panel">
+
+        <span class="mines-label">Твоя статистика</span>
+
+        <div class="mines-balance">
+            <span>Всего игр</span>
+            <strong id="minesGames">0</strong>
+        </div>
+
+        <div class="mines-balance">
+            <span>Открыто клеток</span>
+            <strong id="minesOpened">0</strong>
+        </div>
+
+        <div class="mines-balance">
+            <span>Достижения</span>
+            <strong id="minesAchievements">0</strong>
+        </div>
+
+    </section>
+
+    <footer class="mines-footer">
+        XannUP © 2026 · Демонстрационная игровая платформа
+    </footer>
+
+</main>
+
+</body>
+</html>
