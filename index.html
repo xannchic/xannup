@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="XannUP — игровая демо-платформа">
+  <title>XannUP — Главная</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="assets/core.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <span class="logo-icon">X</span>
+    <span>Xann<span class="logo-accent">UP</span></span>
+  </a>
+
+  <a href="profile/profile.html" class="profile-button">
+    <span class="avatar">👤</span>
+    <span>Профиль</span>
+  </a>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">XANNUP PLATFORM</span>
+      <h1>Добро пожаловать<br>в <span>XannUP</span></h1>
+      <p>
+        Твоя коллекция. Твои игры. Твой прогресс.
+      </p>
+      <a href="#games" class="hero-button">Выбрать игру</a>
+    </div>
+
+    <div class="hero-decoration">
+      <div class="hero-x">X</div>
+    </div>
+  </section>
+
+  <section class="wallet-preview">
+    <div class="wallet-top">
+      <div>
+        <span class="section-label">ДЕМО-БАЛАНС</span>
+        <h2 id="balanceValue">0</h2>
+        <span class="balance-unit">виртуальных очков</span>
+      </div>
+      <div class="wallet-icon">◈</div>
+    </div>
+
+    <div class="wallet-actions">
+      <a href="wallet/wallet.html" class="button-primary">
+        Кошелёк
+      </a>
+
+      <a href="inventory/inventory.html" class="button-secondary">
+        Инвентарь
+      </a>
+    </div>
+
+    <p class="demo-notice">
+      Демонстрационные очки не имеют денежной стоимости.
+      Реальные пополнения и вывод недоступны.
+    </p>
+  </section>
+
+  <section class="section" id="games">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">XANNUP ARCADE</span>
+        <h2>Игры</h2>
+      </div>
+      <span class="section-count">05 ИГР</span>
+    </div>
+
+    <div class="games-grid">
+
+      <a href="games/mines.html" class="game-card mines-card">
+        <div class="game-symbol">✹</div>
+        <div class="game-info">
+          <h3>Мины</h3>
+          <p>Найди безопасные клетки</p>
+        </div>
+        <span class="game-arrow">↗</span>
+      </a>
+
+      <a href="games/upgrade.html" class="game-card upgrade-card">
+        <div class="game-symbol">⬆</div>
+        <div class="game-info">
+          <h3>Upgrader</h3>
+          <p>Улучшай свою коллекцию</p>
+        </div>
+        <span class="game-arrow">↗</span>
+      </a>
+
+      <a href="games/blackjack.html" class="game-card blackjack-card">
+        <div class="game-symbol">♠</div>
+        <div class="game-info">
+          <h3>Blackjack</h3>
+          <p>Карточная игра</p>
+        </div>
+        <span class="game-arrow">↗</span>
+      </a>
+
+      <a href="games/storm.html" class="game-card storm-card">
+        <div class="game-symbol">ϟ</div>
+        <div class="game-info">
+          <h3>Шторм</h3>
+          <p>Аркадное испытание</p>
+        </div>
+        <span class="game-arrow">↗</span>
+      </a>
+
+      <a href="games/cow.html" class="game-card cow-card">
+        <div class="game-symbol">🐄</div>
+        <div class="game-info">
+          <h3>Корова</h3>
+          <p>Преодолей препятствия</p>
+        </div>
+        <span class="game-arrow">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">COMING SOON</span>
+        <h2>Кейсы</h2>
+      </div>
+      <span class="lock-label">🔒 В разработке</span>
+    </div>
+
+    <a href="cases/cases.html" class="cases-card">
+      <div class="cases-symbol">▣</div>
+      <div>
+        <h3>Кейсы XannUP</h3>
+        <p>Раздел готовится к запуску</p>
+      </div>
+      <span class="lock-icon">🔒</span>
+    </a>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div>
+        <span class="section-label">YOUR COLLECTION</span>
+        <h2>Моя коллекция</h2>
+      </div>
+    </div>
+
+    <div class="quick-grid">
+      <a href="inventory/inventory.html" class="quick-card">
+        <span>▤</span>
+        <strong>Инвентарь</strong>
+      </a>
+
+      <a href="history/history.html" class="quick-card">
+        <span>◷</span>
+        <strong>История</strong>
+      </a>
+
+      <a href="stats/stats.html" class="quick-card">
+        <span>▥</span>
+        <strong>Статистика</strong>
+      </a>
+
+      <a href="vip/vip.html" class="quick-card">
+        <span>♛</span>
+        <strong>VIP</strong>
+      </a>
+
+      <a href="help/help.html" class="quick-card">
+        <span>?</span>
+        <strong>Помощь</strong>
+      </a>
+
+      <a href="settings/settings.html" class="quick-card">
+        <span>⚙</span>
+        <strong>Настройки</strong>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="active">
+    <span>⌂</span>
+    Главная
+  </a>
+
+  <a href="#games">
+    <span>▦</span>
+    Игры
+  </a>
+
+  <a href="cases/cases.html">
+    <span>🔒</span>
+    Кейсы
+  </a>
+
+  <a href="inventory/inventory.html">
+    <span>▤</span>
+    Инвентарь
+  </a>
+
+  <a href="profile/profile.html">
+    <span>👤</span>
+    Профиль
+  </a>
+</nav>
+
+</body>
+</html>
