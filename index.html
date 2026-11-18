@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XannUP</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">XannUP<span>.</span></div>
+    <div class="balance">
+        🪙 <span id="balance">1000</span>
+    </div>
+</header>
+
+<main>
+    <section class="banner">
+        <div class="banner-label">XANNUP PLATFORM</div>
+        <h1>Добро пожаловать!</h1>
+        <p>Твоя игровая площадка</p>
+        <div class="banner-coins">🪙 1000 DEMO COINS</div>
+    </section>
+
+    <h2>Игры</h2>
+
+    <section class="games">
+        <div class="game" onclick="openGame('mines')">
+            <div class="emoji">💣</div>
+            <h3>Мины</h3>
+            <p>Найди безопасные клетки</p>
+        </div>
+
+        <div class="game" onclick="openGame('upgrade')">
+            <div class="emoji">🎡</div>
+            <h3>Апгрейд</h3>
+            <p>Колесо улучшений</p>
+        </div>
+
+        <div class="game" onclick="openGame('blackjack')">
+            <div class="emoji">🃏</div>
+            <h3>Блэкджек</h3>
+            <p>Карточная игра</p>
+        </div>
+
+        <div class="game" onclick="openGame('demo')">
+            <div class="emoji">🎯</div>
+            <h3>Демо</h3>
+            <p>Тренировочная игра</p>
+        </div>
+    </section>
+
+    <section id="game-screen">
+        <button class="back" onclick="goHome()">← Назад</button>
+        <div id="game-content"></div>
+    </section>
+
+    <div id="message"></div>
+</main>
+
+<nav>
+    <button onclick="openTab('Главная')">🏠<span>Главная</span></button>
+    <button onclick="openTab('Игры')">🎮<span>Игры</span></button>
+    <button onclick="openTab('VIP')">👑<span>VIP</span></button>
+    <button onclick="openTab('Профиль')">👤<span>Профиль</span></button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>
