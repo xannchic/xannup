@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070d19">
+  <title>XannUP — Апгрейд</title>
+  <link rel="stylesheet" href="upgrade.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="../index.html" class="back">←</a>
+    <a href="../index.html" class="logo">XANN<span>UP</span></a>
+    <div class="balance">
+      <small>МОИ ОЧКИ</small>
+      <strong id="points">0</strong>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div class="eyebrow">XANNUP COLLECTION</div>
+      <h1>АПГРЕЙД</h1>
+      <p>Выбирай предметы и собирай свою коллекцию.</p>
+    </section>
+
+    <section class="category-switch">
+      <button class="category active" data-category="cs2">
+        <span>◈</span> CS2
+      </button>
+      <button class="category" data-category="gifts">
+        <span>✧</span> ПОДАРКИ
+      </button>
+    </section>
+
+    <section class="upgrade-panel">
+      <div class="panel-heading">
+        <div>
+          <div class="eyebrow">МАСТЕРСКАЯ</div>
+          <h2>Апгрейд предмета</h2>
+        </div>
+        <span class="demo-label">ВИРТУАЛЬНЫЙ РЕЖИМ</span>
+      </div>
+
+      <div class="selected-items">
+        <div class="selected-box">
+          <span class="box-label">ТВОЙ ПРЕДМЕТ</span>
+          <div class="selected-icon" id="sourceIcon">?</div>
+          <strong id="sourceName">Не выбран</strong>
+          <button class="small-button" data-role="source">ВЫБРАТЬ</button>
+        </div>
+
+        <div class="upgrade-arrow">➜</div>
+
+        <div class="selected-box target-box">
+          <span class="box-label">ЖЕЛАЕМЫЙ ПРЕДМЕТ</span>
+          <div class="selected-icon" id="targetIcon">?</div>
+          <strong id="targetName">Не выбран</strong>
+          <button class="small-button" data-role="target">ВЫБРАТЬ</button>
+        </div>
+      </div>
+
+      <div class="wheel-heading">
+        <span>КОЛЕСО АПГРЕЙДА</span>
+        <span class="wheel-category" id="wheelCategory">CS2</span>
+      </div>
+
+      <div class="wheel-frame">
+        <div class="pointer"></div>
+        <div class="wheel-window">
+          <div class="wheel-track" id="wheelTrack">
+            <div class="wheel-placeholder">ВЫБЕРИ ПРЕДМЕТЫ ДЛЯ АПГРЕЙДА</div>
+          </div>
+        </div>
+        <div class="pointer bottom"></div>
+      </div>
+
+      <div class="result" id="result">
+        <span class="result-label">РЕЗУЛЬТАТ</span>
+        <strong id="resultText">Здесь появится выбранный предмет</strong>
+      </div>
+
+      <button class="upgrade-button" id="upgradeButton">
+        ЗАПУСТИТЬ АПГРЕЙД
+      </button>
+
+      <p class="notice" id="notice">
+        Выбери свой предмет и желаемый предмет. Колесо покажет выбранный результат.
+      </p>
+    </section>
+
+    <section class="catalog-section">
+      <div class="catalog-heading">
+        <div>
+          <div class="eyebrow">КАТАЛОГ XANNUP</div>
+          <h2 id="catalogTitle">Предметы CS2</h2>
+        </div>
+        <span id="catalogCount">0 предметов</span>
+      </div>
+
+      <div class="selection-mode">
+        <button class="mode-button active" data-role="source">
+          МОЙ ПРЕДМЕТ
+        </button>
+        <button class="mode-button" data-role="target">
+          ЦЕЛЬ АПГРЕЙДА
+        </button>
+      </div>
+
+      <div class="filters" id="filters"></div>
+      <div class="items-grid" id="itemsGrid"></div>
+    </section>
+
+    <section class="inventory-section">
+      <div class="catalog-heading">
+        <div>
+          <div class="eyebrow">МОЯ КОЛЛЕКЦИЯ</div>
+          <h2>Собранные предметы</h2>
+        </div>
+        <span id="inventoryCount">0 предметов</span>
+      </div>
+      <div class="inventory-grid" id="inventoryGrid"></div>
+    </section>
+
+    <footer>XANNUP <span>•</span> Виртуальная коллекция</footer>
+  </main>
+
+  <script src="upgrade.js"></script>
+</body>
+</html>

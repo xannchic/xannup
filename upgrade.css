@@ -1,0 +1,78 @@
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 25px 10px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 12px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+}
+
+.inventory-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 11px;
+  border-radius: 10px;
+  background: #0d1b2d;
+  border: 1px solid var(--border);
+}
+
+.inventory-card .item-icon {
+  font-size: 25px;
+}
+
+.inventory-card strong {
+  display: block;
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
+.inventory-card small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+footer {
+  padding: 35px 0 25px;
+  text-align: center;
+  color: #62768e;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+footer span {
+  color: var(--blue);
+}
+
+@keyframes wheelGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(22, 140, 255, .1); }
+  50% { box-shadow: 0 0 24px rgba(22, 140, 255, .35); }
+}
+
+.wheel-frame.spinning {
+  animation: wheelGlow .6s infinite;
+}
+
+@media (min-width: 650px) {
+  .items-grid,
+  .inventory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .upgrade-panel {
+    padding: 25px;
+  }
+
+  .selected-box {
+    min-height: 180px;
+  }
+
+  .wheel-frame {
+    height: 145px;
+  }
+}
