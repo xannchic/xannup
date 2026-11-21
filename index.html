@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>XannUP</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root { --bg-color: #0c1017; --text-main: #ffffff; --text-muted: #8892b0; --nav-bg: rgba(18, 24, 38, 0.95); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 80px; overflow-x: hidden; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; position: sticky; top: 0; z-index: 100; background: rgba(12, 16, 23, 0.8); backdrop-filter: blur(10px); }
+        .logo { font-weight: 900; font-size: 24px; font-style: italic; letter-spacing: 1px; }
+        .logo span { color: #ffcc00; text-shadow: 0 0 10px rgba(255, 204, 0, 0.4); }
+        .header-right { display: flex; align-items: center; gap: 12px; }
+        .balance { background: #1a2135; padding: 8px 16px; border-radius: 20px; font-weight: 800; border: 1px solid #2a3556; display: flex; align-items: center; gap: 6px; font-size: 14px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #6a11cb, #2575fc); display: flex; justify-content: center; align-items: center; overflow: hidden; padding: 2px; }
+        .avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: #0c1017; display: flex; justify-content: center; align-items: center; overflow: hidden; font-weight: bold; }
+        .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
+        .banner { margin: 0 15px 20px 15px; border-radius: 20px; background: linear-gradient(135deg, #4b2cba 0%, #1e1345 100%); padding: 20px; position: relative; overflow: hidden; display: flex; align-items: center; box-shadow: 0 10px 30px rgba(75, 44, 186, 0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .banner-text h2 { font-size: 24px; margin-bottom: 5px; font-weight: 900; }
+        .banner-text p { font-size: 14px; color: #b3a5d9; margin-bottom: 15px; }
+        .banner-btn { background: #8a2be2; color: white; border: none; padding: 10px 20px; border-radius: 15px; font-weight: bold; cursor: pointer; }
+        .banner-img { position: absolute; right: -5px; bottom: -10px; font-size: 100px; }
+        .live-container { display: flex; gap: 10px; overflow-x: auto; padding: 0 15px 20px 15px; scrollbar-width: none; }
+        .live-container::-webkit-scrollbar { display: none; }
+        .live-badge { display: flex; align-items: center; justify-content: center; background: #1a2135; border-radius: 15px; padding: 0 12px; color: #ff4d4d; font-weight: 900; font-size: 12px; writing-mode: vertical-rl; transform: rotate(180deg); border: 1px solid #2a3556; }
+        .live-card { min-width: 150px; background: #141a2e; border-radius: 15px; padding: 12px; display: flex; flex-direction: column; border: 1px solid #2a3556; }
+        .live-user { display: flex; align-items: center; gap: 6px; font-size: 12px; margin-bottom: 6px; color: var(--text-muted); font-weight: 600; }
+        .live-amount { font-weight: 900; font-size: 16px; color: #4dff88; }
+        .section-title { font-size: 22px; font-weight: 900; margin: 0 15px 15px 15px; }
+        .games-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 15px; }
+        .game-card { border-radius: 20px; padding: 15px; text-align: left; position: relative; overflow: hidden; cursor: pointer; height: 180px; display: flex; flex-direction: column; justify-content: flex-end; transition: transform 0.2s; box-shadow: 0 10px 20px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); background-color: #000; }
+        .game-card:active { transform: scale(0.96); }
+        .card-img { pointer-events: none; -webkit-touch-callout: none; user-select: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; transition: transform 0.3s; }
+        .game-card:active .card-img { transform: scale(1.1); }
+        .card-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); z-index: 2; pointer-events: none; }
+        .online-badge { background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); padding: 5px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; display: inline-flex; align-items: center; gap: 5px; align-self: flex-start; margin-bottom: auto; z-index: 3; border: 1px solid rgba(255,255,255,0.1); }
+        .online-dot { width: 6px; height: 6px; background: #4dff88; border-radius: 50%; box-shadow: 0 0 5px #4dff88; }
+        .game-title { font-weight: 900; font-size: 22px; z-index: 3; text-shadow: 0 2px 4px rgba(0,0,0,0.8); font-style: italic; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: var(--nav-bg); backdrop-filter: blur(15px); display: flex; justify-content: space-around; padding: 12px 0 20px 0; border-top: 1px solid #1f2742; z-index: 100; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: var(--text-muted); cursor: pointer; position: relative; font-weight: 600; }
+        .nav-item.active { color: #fff; }
+        .nav-icon { font-size: 22px; margin-bottom: 4px; }
+        .nav-item.disabled { opacity: 0.4; cursor: not-allowed; }
+        .lock-icon { position: absolute; top: -5px; right: -5px; font-size: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header"><div class="logo">Xann<span>UP</span></div><div class="header-right"><div class="balance">⭐ 0</div><div class="avatar"><div class="avatar-inner" id="avatar">U</div></div></div></div>
+    <div class="banner"><div class="banner-text"><h2>Подарок</h2><p>за пополнение</p><button class="banner-btn">Пополнить ></button></div><div class="banner-img">🎁</div></div>
+    <div class="live-container"><div class="live-badge">LIVE</div><div class="live-card"><div class="live-user"><span>🔮</span> Илюшка Мар...</div><div class="live-amount">1 338 ⭐</div></div><div class="live-card"><div class="live-user"><span>🎁</span> Илю...</div><div class="live-amount">1 115 ⭐</div></div></div>
+    <div class="section-title">Игры</div>
+    <div class="games-grid">
+        <!-- Корова -->
+        <div class="game-card" onclick="alert('Корова в разработке')">
+            <div class="online-badge"><div class="online-dot"></div> 108 играет</div>
+            <img src="https://i.postimg.cc/nLxTxVJB/file-00000000b6348210b14322c7cab65ae2.png" class="card-img" alt="cow">
+            <div class="card-overlay"></div>
+            <div class="game-title">Корова</div>
+        </div>
+        <!-- Ракетка -->
+        <div class="game-card" onclick="alert('Ракетка в разработке')">
+            <div class="online-badge"><div class="online-dot"></div> 413 играет</div>
+            <img src="https://i.postimg.cc/W4VSVpvx/file-000000005acc81f48f8d9b718f5c53b8.png" class="card-img" alt="rocket">
+            <div class="card-overlay"></div>
+            <div class="game-title">Ракетка</div>
+        </div>
+        <!-- Мины -->
+        <div class="game-card" onclick="alert('Мины в разработке')">
+            <div class="online-badge"><div class="online-dot"></div> 24 играет</div>
+            <img src="https://i.postimg.cc/Bv3N3Z0d/IMG-20261121-221206.png" class="card-img" alt="mines">
+            <div class="card-overlay"></div>
+            <div class="game-title">Мины</div>
+        </div>
+        <!-- Рейс -->
+        <div class="game-card" onclick="alert('Рейс в разработке')">
+            <div class="online-badge"><div class="online-dot"></div> 1 466 играет</div>
+            <img src="https://i.postimg.cc/GpRzR3Cf/IMG-20261121-221235.png" class="card-img" alt="race">
+            <div class="card-overlay"></div>
+            <div class="game-title">Рейс</div>
+        </div>
+    </div>
+    <div class="bottom-nav"><div class="nav-item active"><div class="nav-icon">🎮</div>Игры</div><div class="nav-item disabled"><div class="nav-icon">🎁</div>Кейсы<div class="lock-icon">🔒</div></div><div class="nav-item"><div class="nav-icon">📦</div>Инвентарь</div><div class="nav-item"><div class="nav-icon">🎉</div>Бонусы</div></div>
+    <script>const tg = window.Telegram.WebApp; tg.expand(); tg.setHeaderColor('#0c1017'); if (tg.initDataUnsafe && tg.initDataUnsafe.user) { const user = tg.initDataUnsafe.user; if (user.first_name) document.getElementById('avatar').innerText = user.first_name.charAt(0).toUpperCase(); if (user.photo_url) document.getElementById('avatar').innerHTML = `<img src="${user.photo_url}" alt="avatar">`; }</script>
+</body>
+</html>
